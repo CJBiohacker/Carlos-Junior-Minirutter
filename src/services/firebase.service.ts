@@ -1,18 +1,19 @@
 import { Product, Order } from "../types/types";
 import { getAllProducts, getAllOrders } from "../utils/queries";
 
-export const getProductsFromFirestore = async () => {
+export const getProductsFromFirestore = async (): Promise<Product[] | undefined> => {
   try {
-    const data: Product[] = (await getAllProducts()) as Product[];
+    const data = await getAllProducts();
+
     return data;
   } catch (error) {
     console.error(error);
   }
 };
 
-export const getOrdersFromFirestore = async () => {
+export const getOrdersFromFirestore = async (): Promise<Order[] | undefined> => {
   try {
-    const data: Order[] = (await getAllOrders()) as Order[];
+    const data = await getAllOrders();
 
     return data;
   } catch (error) {
