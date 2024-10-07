@@ -33,7 +33,7 @@ export const getAllProducts = async () => {
       data.push(doc.data() as Product);
     });
 
-    console.log("🚀 ~ getAllProducts ~ data:", data)
+    console.log("Order successfully stored in Firestore");
     return data;
   } catch (error) {
     console.error("Error getting Products: ", error);

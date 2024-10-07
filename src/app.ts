@@ -2,13 +2,16 @@ import express, { Request, Response, NextFunction } from "express";
 import { PORT } from "./utils/consts";
 import firebaseRoute from "./routes/firebaseRoutes";
 import "dotenv/config";
+import { fetchProducts } from "./services/shopify.service";
 
 const app = express();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.use('/api', firebaseRoute);
+fetchProducts().then();
+
+app.use("/api", firebaseRoute);
 
 app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
   console.error(err.stack);
