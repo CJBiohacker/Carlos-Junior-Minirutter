@@ -2,15 +2,14 @@ import express, { Request, Response, NextFunction } from "express";
 import { PORT } from "./utils/consts";
 import firebaseRoute from "./routes/firebaseRoutes";
 import "dotenv/config";
-import { fetchProducts } from "./services/shopify.service";
+import { fetchAndSaveProducts } from "./services/shopify.service";
 
 const app = express();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-fetchProducts().then();
-
+fetchAndSaveProducts().then();
 app.use("/api", firebaseRoute);
 
 app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
