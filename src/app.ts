@@ -1,7 +1,10 @@
 import express, { Request, Response, NextFunction } from "express";
 import "dotenv/config";
 import { PORT } from "./utils/consts";
-import { fetchAndSaveProducts, fetchAndSaveOrders } from "./services/shopify.service";
+import {
+  fetchAndSaveProducts,
+  fetchAndSaveOrders,
+} from "./services/shopify.service";
 import firebaseRoute from "./routes/firebaseRoutes";
 
 const app = express();

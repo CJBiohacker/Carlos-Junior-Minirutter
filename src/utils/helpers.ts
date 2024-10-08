@@ -1,3 +1,7 @@
+import {
+  fetchAndSaveOrders,
+  fetchAndSaveProducts,
+} from "../services/shopify.service";
 import { Product, Order } from "../types/types";
 import { v4 as uuidv4 } from "uuid";
 
@@ -35,9 +39,9 @@ export const formatOrderObjectForStorage = (order: any): Order => {
   const data = {
     id: uuidv4(),
     platform_id: order.id,
-    line_items: order.line_items.map((item: any) => {
-      return { product_id: item.product_id };
-    }),
+    line_items: {
+      product_id: order.line_items[0].product_id,
+    },
   };
 
   return data;

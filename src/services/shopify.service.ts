@@ -74,14 +74,10 @@ export const fetchAndSaveOrders = async () => {
 
       const data = await response.json();
 
-      // console.log("🚀 ~ fetchAndSaveOrders ~ page:", page);
-
       for (const order of data.orders) {
-      console.log("🚀 ~ fetchAndSaveOrders ~ order => ", order)
         const isSaved = await isOrderSaved(order.id);
         if (!isSaved) {
           const formattedOrder = formatOrderObjectForStorage(order);
-          // console.log("🚀 ~ fetchAndSaveOrders ~ formattedOrder:", JSON.stringify(formattedOrder) )
           await saveOrder(formattedOrder);
         }
       }
