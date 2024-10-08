@@ -16,8 +16,8 @@ export const saveProduct = async (product: Product) => {
 
 export const saveOrder = async (order: Order) => {
   try {
-    const uuid: string = uuidv4();
-    await db.collection(COLLECTION_2).doc(uuid).set(order);
+    const docId = String(order.platform_id);
+    await db.collection(COLLECTION_2).doc(docId).set(order);
 
     console.log("Order successfully stored in Firestore");
   } catch (error) {
@@ -25,7 +25,7 @@ export const saveOrder = async (order: Order) => {
   }
 };
 
-export const isProductSaved = async (productId: string ): Promise<boolean> => {
+export const isProductSaved = async (productId: string): Promise<boolean> => {
   const docId = String(productId);
   const product = await db.collection(COLLECTION_1).doc(docId).get();
   return product.exists;
@@ -60,4 +60,10 @@ export const getAllOrders = async (): Promise<Order[]> => {
     console.error("Error getting Orders:");
     throw error;
   }
+};
+
+export const isOrderSaved = async (orderID: string): Promise<boolean> => {
+  const docId = String(orderID);
+  const order = await db.collection(COLLECTION_2).doc(docId).get();
+  return order.exists;
 };

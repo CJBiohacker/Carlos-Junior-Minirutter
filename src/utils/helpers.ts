@@ -26,6 +26,19 @@ export const formatProductObjectForStorage = (product: any): Product => {
     id: uuidv4(),
     platform_id: product.id,
     name: product.title,
-  }
+  };
+
+  return data;
+};
+
+export const formatOrderObjectForStorage = (order: any): Order => {
+  const data = {
+    id: uuidv4(),
+    platform_id: order.id,
+    line_items: order.line_items.map((item: any) => {
+      return { product_id: item.product_id };
+    }),
+  };
+
   return data;
 };
