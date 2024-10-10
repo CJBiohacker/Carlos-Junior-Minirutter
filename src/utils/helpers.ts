@@ -1,7 +1,3 @@
-import {
-  fetchAndSaveOrders,
-  fetchAndSaveProducts,
-} from "../services/shopify.service";
 import { Product, Order } from "../types/types";
 import { v4 as uuidv4 } from "uuid";
 

@@ -1,4 +1,3 @@
-import { v4 as uuidv4 } from "uuid";
 import { db } from "../database/firebaseconfig";
 import { Product, Order } from "../types/types";
 import { COLLECTION_1, COLLECTION_2 } from "../utils/consts";
