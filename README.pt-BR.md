@@ -55,7 +55,7 @@ Como há uma conexão entre nossa API e o Banco de Dados Firestore, um middlewar
 
 Quando o projeto for executado, ele começará a buscar todos os Produtos e Pedidos (respeitando as restrições dos [requirements](https://rutterapi.notion.site/Public-Technical-Takehome-Question-aff80c5fa340451f99627d4f3ddab767)), verificando se já estão armazenados no Firestore e, caso não estejam, irá armazená-los. Após isso, haverá 2 rotas preparadas para buscar esses dados diretamente do Firestore, conforme mostrado na seção <a href='#restApi'>Instruções da API Rest</a>, onde você pode testar via [Postman](https://www.postman.com/) or [Inmsonia](https://insomnia.rest/download).
 
-#### Defining the .env file
+### Defining the .env file
 
 O arquivo `.env` precisa respeitar este formato com as variáveis correspondentes, como mostrado abaixo:
 
