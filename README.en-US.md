@@ -1,6 +1,6 @@
 # Mini-Rutter-with-Shopify
 
-Developed for a Technical Take-home Assignment from Rutter's job position of Software Engineer (Remote, Brazil). This project is a backend service responsible to fetch the products and orders from simulated Rutter shopify platform and saved it in a database of my choice (NoSQL Firetore Database) following these [requirements](https://rutterapi.notion.site/Public-Technical-Takehome-Question-aff80c5fa340451f99627d4f3ddab767).
+Developed for a Technical Take-home Assignment from Rutter's job position of Software Engineer (Remote, Brazil). This project is a backend service responsible to fetch the products and orders from simulated Rutter shopify platform and save it in a database of my choice (NoSQL Firetore Database) following these [requirements](https://rutterapi.notion.site/Public-Technical-Takehome-Question-aff80c5fa340451f99627d4f3ddab767).
 
 # Technologies
 
