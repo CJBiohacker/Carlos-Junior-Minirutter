@@ -55,7 +55,7 @@ Since there's a connection between our API and the Firestore Database, a middlew
 
 When the project runs it will begin fetching all the Products and Orders (respecting the constraints of the [requirements](https://rutterapi.notion.site/Public-Technical-Takehome-Question-aff80c5fa340451f99627d4f3ddab767)), checking if it's already stored in Firestore and if not, will do it. After that there will be 2 routes prepared to fetch this data directly from Firestore as shown in the section `<a href='#restApi'>`Rest API Instructions`</a>` where you can test via [Postman](https://www.postman.com/) or [Inmsonia](https://insomnia.rest/download).
 
-#### Defining the .env file
+### Defining the .env file
 
 The .env file needs to respect this format with the correspondent variables, as it is below:
 
