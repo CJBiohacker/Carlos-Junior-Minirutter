@@ -1,31 +1,29 @@
-import { Request, Response, NextFunction } from "express";
+import { Context, Next } from "koa";
 import {
   getProductsFromFirestore,
   getOrdersFromFirestore,
 } from "../services/firebase.service";
 
 export const getProductsMiddleware = async (
-  req: Request,
-  res: Response,
-  next: NextFunction
+  ctx: Context, next: Next
 ) => {
   try {
     const products = await getProductsFromFirestore();
-    res.json(products);
+    ctx.body = products;
   } catch (error) {
-    next(error);
+    ctx.throw(500, error);
   }
+  await next();
 };
 
 export const getOrdersMiddleware = async (
-  req: Request,
-  res: Response,
-  next: NextFunction
+  ctx: Context, next: Next
 ) => {
   try {
     const products = await getOrdersFromFirestore();
-    res.json(products);
+    ctx.body = orders;
   } catch (error) {
-    next(error);
+    ctx.throw(500, error); 
   }
+  await next();
 };
