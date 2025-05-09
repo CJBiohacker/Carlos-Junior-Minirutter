@@ -1,10 +1,10 @@
-import express from "express";
+import Router from "@koa/router";
 import {
   getProductsMiddleware,
   getOrdersMiddleware,
 } from "../middleware/middleware";
 
-const firebaseRoute = express.Router();
+const firebaseRoute = new Router();
 
 firebaseRoute.get("/products", getProductsMiddleware);
 firebaseRoute.get("/orders", getOrdersMiddleware);
