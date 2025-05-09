@@ -1,4 +1,5 @@
-import express, { Request, Response, NextFunction } from "express";
+import Koa, { Context, Next } from "koa";
+import bodyParser from "koa-bodyparser";
 import "dotenv/config";
 import { PORT } from "./utils/consts";
 import {
@@ -7,21 +8,34 @@ import {
 } from "./services/shopify.service";
 import firebaseRoute from "./routes/firebaseRoutes";
 
-const app = express();
+const app = new Koa();
 
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+app.use(bodyParser());
 
-fetchAndSaveProducts().then();
-fetchAndSaveOrders().then();
+const initializeShopifyData = async (): Promise<void> => {
+  try {
+    await fetchAndSaveProducts();
+    await fetchAndSaveOrders();
+  } catch (error) {
+    console.error("Error initializing Shopify data:", error);
+  }
+};
 
-app.use("/api", firebaseRoute);
+initializeShopifyData();
 
-app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
-  console.error(err.stack);
-  res.status(500).json({ message: "Internal Server Error" });
+app.use(firebaseRoute.routes());
+app.use(firebaseRoute.allowedMethods());
+
+app.use(async (ctx: Context, next: Next): Promise<void> => {
+  try {
+    await next();
+  } catch (err) {
+    console.error(err.stack);
+    ctx.status = 500;
+    ctx.body = { message: "Internal Server Error" };
+  }
 });
 
-app.listen(PORT, () => {
+app.listen(PORT, (): void => {
   console.log(`Server is running on localhost:${PORT}`);
 });
